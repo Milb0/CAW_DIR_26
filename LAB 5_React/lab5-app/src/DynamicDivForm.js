@@ -7,7 +7,9 @@ const DynamicDivForm = () => {
     backgroundColor: '',
   });
 
-  const [generatedDiv, setGeneratedDiv] = useState(null);
+  //const [generatedDiv, setGeneratedDiv] = useState(null);
+  const [generatedDivs, setGeneratedDivs] = useState([]);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +27,9 @@ const DynamicDivForm = () => {
         backgroundColor,
       };
 
-      setGeneratedDiv(<div style={divStyle}></div>);
+      // setGeneratedDiv(<div style={divStyle}></div>);
+      setGeneratedDivs((prevDivs) => [...prevDivs, <div style={divStyle} key={prevDivs.length}></div>]);
+
     }
   };
 
@@ -67,7 +71,7 @@ const DynamicDivForm = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
-      {generatedDiv}
+      {generatedDivs}
     </div>
   );
 };
